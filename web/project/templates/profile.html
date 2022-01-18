@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main">
+    <div class="under-underground">
+        <div style="filter: brightness(0.15);">
+            <div class="image-box-under-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-under-underground">
+                <img src="{{ url_for('profile_pic', filename=current_user.username, number=3) }}" class="image image-under-underground">
+            </div>
+        </div>
+    </div>
+    <div class="underground">
+        <div style="filter: brightness(0.6);">
+            <div class="image-box-underground">
+                <img src="{{ url_for('static', filename='images/border_3.png') }}" class="image image-border-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-underground">
+                <img src="{{ url_for('profile_pic', filename=current_user.username, number=2) }}" class="image image-underground">
+            </div>
+        </div>
+    </div>
+    <div class="background">
+        <div class="column column-left">
+            <div class="wrapper-flex">
+                <div class=flex-top-1>
+                    <div class="wrapper-info">
+                        <p class="wheat_text">@{{ user.username }}</p>
+                        <p class="wheat_text" style="color:grey; font-size: 12px">{{ bio }}</p>
+                        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                        {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+                    </div>
+                </div>
+                <div class=flex-top-2></div>
+                <div class=flex-middle></div>
+                <div class=flex-bottom>
+                    <div class=image-box-front>
+                        <img src="{{ url_for('static', filename='images/border_2.png') }}" class="image image-border">
+                        <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask">
+                        <img src="{{ url_for('profile_pic', filename=current_user.username, number=1) }}" class="image" style="filter: brightness(0.8);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foreground">
+        <div class="column column-right">
+            <div class="wrapper-flex">
+                <div class=flex-top-1></div>
+                <div class=flex-top-2>
+                    {% if current_user.is_anonymous %}
+                    <div class="btn-group" style="text-align: left;">
+                        <a class="button wheat_text_link" href="{{ url_for('sign_up') }}">
+                            sign_up
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('sign_in') }}">
+                            sign_in
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% else %}
+                    <div class="btn-group" style="text-align: left;">
+                        <a class="button wheat_text_link" href="{{ url_for('profile_edit', username=current_user.username) }}">
+                            __edit
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('log_out') }}">
+                            log_out
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="flex-middle"></div>
+                <div class="flex-bottom">
+                    <div class="fixed-height-container">
+                        <div class="content liked-songs">
+                            {% for track in tracks %}
+                            <p>
+                            {{ track.song_title }} - {{ track.artist }}<br><span style="color: gray">{{ track.year }} - {{ track.album_title }}</span>
+                            </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

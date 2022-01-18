@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main">
+    
+    <div class="foreground">
+        <div class="column column-right">
+            <div class="wrapper-flex">
+                <div class=flex-top-1></div>
+                <div class=flex-top-2>
+                    {% if current_user.is_anonymous %}
+                    <div class="btn-group" style="text-align: left;">
+                        <a class="button wheat_text_link" href="{{ url_for('sign_up') }}">
+                            sign_up
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('sign_in') }}">
+                            sign_in
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% else %}
+                    <div class="btn-group" style="text-align: left;">
+                        <a class="button wheat_text_link" href="{{ url_for('profile', username=current_user.username) }}">
+                            profile
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('log_out') }}">
+                            log_out
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="flex-middle"></div>
+                <div class="flex-bottom">
+                    <ul class="list text-logo">
+                        <li class="wheat_text_link_green">Beauty.</li>
+                        <li class="wheat_text_link_yellow">Audacity.</li>
+                        <li class="wheat_text_link_red">Luck.</li>
+                        <br>
+                        <li class="wheat_text_link" style="cursor:pointer">>UYEBAR.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="background">
+        <div class="column column-left">
+            <div class="wrapper-flex">
+                <div class=flex-top-1>
+                    <div class="wrapper-info">
+                    <p>The best fucking sound you'll hear tonight.</p>
+                    <p>24/7 rotation. Mundane digging in music collections.</p>
+                    </div>
+                </div>
+                <div class=flex-top-2></div>
+                <div class=flex-middle></div>
+                <div class=flex-bottom>
+                    <div style="position: relative;">
+                        <img src="static/images/uyebar_radio_2.jpg" class="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="underground">
+        <div class="column-underground">
+            <div class="wrapper-flex">
+                <div class="flex-middle-underground">
+                    <div style="filter: brightness(0.8); position: relative;">
+                        <img src="static/images/uyebar_radio_2.jpg" class="image image-underground">
+                    </div>
+                </div>
+                <div class="flex-bottom-underground">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="under-underground">
+        <div class="column-under-underground">
+            <div class="wrapper-flex">
+                <div class="flex-middle-under-underground">
+                    <div style="filter: brightness(0.15); position: relative;">
+                        <img src="static/images/uyebar_radio_2.jpg" class="image image-under-underground">
+                    </div>
+                </div>
+                <div class="flex-bottom-under-underground">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+{% endblock %}

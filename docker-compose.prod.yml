@@ -1,0 +1,77 @@
+version: "3.7"
+
+services:
+  icecast:
+    build: ./icecast2
+    ports:
+      - "8090:8090"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+  liquidsoap:
+    build: ./liquidsoap
+    ports:
+      - "8091:8091"
+    volumes:
+      - /volume1/media/music/igorek/Prince of Denmark:/home/user/traumprinz
+      - /volume1/media/music/yurets:/home/user/yurets:Z
+      - /var/services/homes/rwrotson/radio/liquidsoap/covers_dir:/home/user/covers_dir/:z
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+  web:
+    build:
+      context: ./web_test2
+      dockerfile: Dockerfile.prod
+    command: gunicorn --bind 0.0.0.0:5000 --timeout 3660 --log-level 'debug' manage:app
+    volumes:
+      #- static_volume:/home/app/web/project/static
+      - media_volume:/home/app/web/project/media
+    expose:
+      - 5000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+  nginx:
+    build: ./nginx
+    volumes:
+      #- static_volume:/home/app/web/project/static/
+      - media_volume:/home/app/web/project/media
+      - /var/services/homes/rwrotson/radio/liquidsoap/covers_dir:/home/app/web/project/covers_dir/:z
+    ports:
+      - 8092:80
+    depends_on:
+      - web
+      - liquidsoap
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+
+
+volumes:
+  postgres_data_prod:
+  #static_volume:
+  media_volume:

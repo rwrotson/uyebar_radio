@@ -1,0 +1,767 @@
+/*                             RESET             */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*                             SETTINGS             */
+
+/* Fonts */
+
+@font-face {
+    font-family: Silom;
+    src: url('/static/fonts/silom.woff2') format("woff2");
+    src: url('/static/fonts/silom.woff') format("woff");
+    src: url('/static/fonts/silom.ttf') format("truetype");
+    font-style: normal; 
+    font-weight: normal; 
+    font-display: block;
+}
+
+/* Project settings */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: Silom;
+    font-size: 52px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    z-index: 0;
+}
+
+body {
+    display:block;
+}
+
+@media screen and (max-width: 5120px) {
+    html {
+      font-size: 52px; } }
+
+@media screen and (max-width: 4096px) {
+    html {
+      font-size: 42px; } }
+
+@media screen and (max-width: 3072px) {
+    html {
+      font-size: 34px; } }
+
+@media screen and (max-width: 2560px) {
+    html {
+      font-size: 28px; } }
+
+@media screen and (max-width: 1920px) {
+    html {
+      font-size: 22px; } }
+
+@media screen and (max-width: 1680px) {
+    html {
+      font-size: 18px; } }
+
+@media screen and (max-width: 1440px) {
+    html {
+      font-size: 16px; } }
+
+/*                             STRUCTURE             */
+
+/* Index page layout */
+
+.index_page {
+    background-color: black;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    color: wheat;
+    display:block;
+    text-align: center;
+    font-family: Silom;
+    font-size: 2rem;
+}
+
+.index_page>div {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+    
+.index_page::selection {
+    background: transparent;
+}
+.index_page::-moz-selection {
+    background: transparent;
+}
+
+.header {
+    font-size: 5rem;
+    margin-bottom: 3vh;
+    font-family: Silom;
+}
+
+/* Sign-in/sign-up */
+
+.form-input {
+    background-color: wheat !important; 
+    color: black !important;
+    width: 25vw;
+    min-width: 350px;
+    font-size: 1.5625rem;
+}
+
+.form-button {
+    width: 25vw;
+    min-width: 350px;
+    text-align: center;
+}
+
+.form-label {
+    font-size: 1.5625rem;
+}
+
+/* Sidebar layout */
+
+.sidebar {
+    position: fixed;
+    font-size: 1.25rem;
+    background-color: black;
+    height: 96vh;
+    min-width: 288px;
+    width: 20vw;
+    overflow: auto;
+    padding-left: 0.7vw;
+    padding-right: 2vw;
+    padding-top: 0.55vh;
+    padding-bottom: 0.55vh;
+    font-family: Silom;
+    font-size: 1.25rem;
+    z-index: 20;
+}
+
+.sidebar a {
+    display: block;
+    color: wheat;
+    padding-top: 1.1vh;
+    padding-left: 0.7vw;
+    padding-bottom: 0px;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.sidebar label {
+    color: grey;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    margin-left: 0.4vw;
+}
+
+.sidebar a:hover {
+    color: goldenrod;
+}
+  
+.sidebar a.active {
+    color: red;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* main */
+
+.main {
+    display: block;
+    position: relative;
+    background-color: transparent;
+    color:wheat;
+    height: 100%;
+    width: 80vw;
+    min-width: 500px;
+    left: 20vw;
+    overflow-x: visible;
+}
+
+@media screen and (max-width: 1445px) {
+    .main {
+      left: 288px; } }
+
+/* Foreground and flex-grid */
+
+.foreground {
+    position: absolute;
+    margin-left: -2.8vw;
+    height: 100%;
+    width: 100%;
+    min-width: 500px;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 1445px) {
+    .foreground {
+      margin-left: -80px; } }
+
+.column-right {
+    position: sticky;
+    right: 13vw;
+    height: 100%;
+    width: 50vh;
+    min-width: 450px;
+    float: right;
+    text-align: right;
+    z-index: 11;
+}
+
+.column-left {
+    position: relative;
+    display: block;
+    height: 96%;
+    width: 50vh;
+    min-width: 450px;
+    float: left;
+    text-align: left;
+}
+
+.wrapper-flex {
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    flex-direction: column;
+    height: 96vh;
+    justify-content: flex-end;
+}
+
+.flex-top-1 {
+    flex: 0 0 12vh;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+}
+
+.flex-top-2 {
+    flex: 0 0 6vh;
+    margin-bottom: 1vh;
+}
+
+.flex-middle {
+    flex: 1 1 0vh;
+}
+
+.flex-bottom {
+    height: 50vh;
+    flex: 0 0 50vh;
+    margin-bottom: 5vh;
+}
+
+.flex-bottom-1 {
+    height: 10vh;
+    flex: 0 0 10vh;
+}
+
+.flex-bottom-2 {
+    height: 40vh;
+    flex: 0 0 40vh;
+    margin-bottom: 5vh;
+}
+
+/* Background group */
+
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.wrapper-info {
+    position: relative;
+    left: 7vw;
+    width: 20.8vw;
+    font-size: 1rem;
+    min-width: 300px;
+    text-align: right;
+    cursor: default;
+    user-select: none;
+}
+
+/* Undergrounds */
+
+.underground {
+    position: absolute;
+    height: 96%;
+    width: 100%;
+    z-index: -10;
+}
+
+.column-underground {
+    position: relative;
+    display: block;
+    left: 7vw;
+    height: 100%;
+    width: 60vh;
+    min-width: 540px;
+    float: left;
+    text-align: left;
+    z-index: -10;
+}
+
+.flex-middle-underground {
+    height: 60vh;
+    flex: 0 0 60vh;
+}
+
+.flex-bottom-underground {
+    height: 16vh;
+    flex: 0 0 16vh;
+}
+
+.under-underground {
+    position: absolute;
+    background-color: black;
+    height: 120%;
+    width: 120%;
+    z-index: -20;
+}
+
+.column-under-underground {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 89vh;
+    left: 25vw;
+    min-width: 800px;
+    float: left;
+    text-align: left;
+    z-index: -20;
+}
+
+.flex-middle-under-underground {
+    height: 89vh;
+    flex: 0 0 89vh;
+}
+
+.flex-bottom-under-underground {
+    height: 33vh;
+    flex: 0 0 33vh;
+}
+
+/* Footer layout */
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    height: 4vh;
+    padding: 10px;
+    font-family: Silom;
+    font-size: 0.625rem;
+    background: black;
+    color: wheat;
+    text-align: center;
+    width: 100%;
+    z-index: 30;
+}
+
+/*                             ELEMENTS             */
+
+
+/* Text and links style */
+
+.wheat_text {
+    color: wheat;
+    font-family: Silom;
+    font-size: 1.25rem;
+}
+
+.wheat_text_link {
+    color: wheat;
+    text-decoration: none;
+}
+
+.wheat_text_link_green {
+    color: wheat;
+    text-decoration: none;
+}
+
+.wheat_text_link_yellow {
+    color: wheat;
+    text-decoration: none;
+}
+
+.wheat_text_link_red {
+    color: wheat;
+    text-decoration: none;
+}
+
+.wheat_text_link:hover {
+    color: goldenrod;
+}
+
+.wheat_text_link_green:hover {
+    color: green;
+}
+
+.wheat_text_link_yellow:hover{
+    color: goldenrod;
+}
+
+.wheat_text_link_red:hover {
+    color: red;
+}
+
+.wheat_text_link:active {
+    color: red;
+    text-decoration: none;
+}
+
+.wheat_text_link .wheat_text_link_green .wheat_text_link_yellow .wheat_text_link_red::selection {
+    background: transparent;
+}
+
+.wheat_text_link .wheat_text_link_green .wheat_text_link_yellow .wheat_text_link_red::-moz-selection {
+    background: transparent;
+}
+
+.text-logo {
+    position: relative;
+    top: 22vh;
+    font-size: 1.25rem;
+    text-shadow: 0.11vh 0.11vh 0.11vh gray,
+                0.22vh 0.22vh 0.11vh gray,
+                0.33vh 0.33vh 0.11vh black;
+    z-index: 15;
+    cursor: default
+}
+
+/* Buttons */
+
+.btn-group .button, 
+.btn-group .a, 
+.btn-group .input {
+    background-color: grey;
+    border: black;
+    color: wheat;
+    padding: 2vh 1.8vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Silom;
+    font-size: 1.5625rem;
+    cursor: pointer;
+    margin-left: 0.55vh;
+    margin-right: 0.55vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1;
+    text-shadow: 0.11vh 0.11vh 0.11vh dimgray,
+                0.22vh 0.22vh 0.11vh black;
+    box-shadow: 0.11vh 0.11vh 0.11vh dimgray,
+                0.22vh 0.22vh 0.11vh dimgray,
+                0.33vh 0.33vh 0.11vh dimgray,
+                0.44vh 0.44vh 0.11vh black;
+}
+
+.btn-group .button-no-hover {
+    background-color: grey;
+    border: black;
+    color: wheat;
+    padding: 2vh 1.8vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Silom;
+    font-size: 1.5625rem;
+    margin-left: 0.55vh;
+    margin-right: 0.55vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1;
+    text-shadow: 0.11vh 0.11vh 0.11vh dimgray,
+                0.22vh 0.22vh 0.11vh black;
+    box-shadow: 0.11vh 0.11vh 0.11vh dimgray,
+                0.22vh 0.22vh 0.11vh dimgray,
+                0.33vh 0.33vh 0.11vh dimgray,
+                0.44vh 0.44vh 0.11vh black;
+}
+
+.btn-group .button #base {
+    text-align: left;
+}
+
+.btn-group .button:hover {
+    background-color: dimgray;
+    color: goldenrod;
+}
+
+.btn-group .button:active {
+    background-color: dimgray;
+    color: red;
+    box-shadow: none;
+    -ms-transform: translate(0.44vh, 0.44vh);
+    -webkit-transform: translate(0.44vh, 0.44vh);
+    transform: translate(0.44vh, 0.44vh);
+}
+
+/* Lists */
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Images */
+
+.image-box {
+    position: relative;
+    width: 50vh;
+    height: 50vh;
+}
+
+.image {
+    position: absolute;
+    width: 50vh;
+    height: 50vh;
+    z-index: 5;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.image-mask {
+    z-index: 11;
+    mix-blend-mode: darken;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.image-border {
+    width: 51vh;
+    height: 51vh;
+    margin-top: -5px;
+    margin-left: -5px;
+    z-index: 12;
+    filter: blur(10px);
+}
+
+.image-box-underground {
+    position: relative;
+    left: 9vw;
+    width: 60vh;
+    height: 60vh;
+}
+
+.image-underground {
+    position: relative;
+    width: 60vh; 
+    height: 60vh;
+    filter: blur(5px);
+    border: 0px solid black;
+    z-index: -10;
+}
+
+.image-mask-underground {
+    width: 60vh; 
+    height: 60vh;
+    filter: blur(10px);
+    border: 1px solid black;
+    mix-blend-mode: darken;
+    z-index: -9;
+}
+
+.image-border-underground {
+    width: 63vh;
+    height: 63vh;
+    left: -1vw;
+    margin-top: -1.5px;
+    margin-left: -1.5px;
+    filter: blur(10px);
+    z-index: -8;
+}
+
+.image-box-under-underground {
+    position: relative;
+    top: 9vh;
+    left: 20vw;
+    width: 120vh;
+    height: 120vh;
+}
+
+.image-under-underground {
+    width: 100vh;
+    height: 100vh;
+    filter: blur(20px);
+    -webkit-filter: blur(18px);
+    border: 20px solid black;
+    z-index: -20;
+}
+
+.image-mask-under-underground {
+    width: 100vh;
+    height: 100vh;
+    filter: blur(10px);
+    z-index: -19;
+    border: 10px solid black;
+    mix-blend-mode: darken;
+}
+
+/* Edit profile page */
+
+.edit-front {
+    z-index: 10;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input[type=text] {
+    background-color: transparent;
+    
+}
+
+.text-input {
+    color:grey; 
+    font-size: 0.75rem; 
+    background-color: transparent;
+    border-style: hidden;
+    text-align: start;
+    resize: none;
+}
+
+/* Checkboxes on edit page */
+
+.checkbox-group {
+    width: 100%;
+    position: relative;
+}
+
+.checkbox-group:hover {
+    cursor: pointer;
+}
+
+.liked-songs-wrapper {
+    height: 100%;
+    width: 100%;
+    display:flex;
+}
+
+.left-container {
+    width: 85%;
+    flex:0 0 85%;
+}
+
+.right-container {
+    width: 15%;
+    flex:0 0 15%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.checkbox {
+    position: relative;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    background-color: gray;
+    color: black;
+    height: 1rem;
+    width: 80%;
+    padding: 5px;
+    font-size: 0.8rem;
+    padding: 2px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+/* Static scrollbar in profile */
+
+.fixed-height-container {
+    position: relative;
+    float:right;
+    top: 3vh;
+    height: 33vh;
+    width: 33vh; 
+    padding: 3px; 
+    background: transparent;
+    z-index: 15;
+}
+  
+.content {
+    text-shadow: 1px 1px 1px black;
+    height: 33vh;
+    overflow: auto;
+    color: wheat;
+}
+
+.liked-songs {
+    font-size: 1rem;
+}

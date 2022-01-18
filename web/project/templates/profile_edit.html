@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main">
+
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="under-underground">
+        <div style="filter: brightness(0.15);">
+            <div class="image-box-under-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-under-underground">
+                <img src="{{ url_for('profile_pic', filename=current_user.username, number=3) }}" class="image image-under-underground">
+            </div>
+        </div>
+    </div>
+    <div class="underground">
+        <div style="filter: brightness(0.6);">
+            <div class="image-box-underground">
+                <img src="{{ url_for('static', filename='images/border_3.png') }}" class="image image-border-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-underground">
+                <img src="{{ url_for('profile_pic', filename=current_user.username, number=2) }}" class="image image-underground">
+            </div>
+        </div>
+    </div>
+    <div class="background">
+        <div class="column column-left">
+            <div class="wrapper-flex">
+                <div class=flex-top-1 style="z-index: 100;">
+                    <div class="wrapper-info" style="user-select: auto; position: relative; z-index: 100;">
+                        <p class="wheat_text">@{{ user.username }} bio:</p>
+                        <p><textarea name="bio" maxlength="140" rows="6" cols="26" class="wheat_text text-input">{{ user.bio }}</textarea></p>
+                    </div>
+                </div>
+                <div class=flex-top-2></div>
+                <div class=flex-middle></div>
+                <div class=flex-bottom>
+                    <div class=image-box-front>
+                        <img src="{{ url_for('static', filename='images/border_2.png') }}" class="image image-border">
+                        <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask">
+                        <img src="{{ url_for('profile_pic', filename=current_user.username, number=1) }}" class="image" style="filter: brightness(0.8);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foreground">
+        <div class="column column-right">
+            <div class="wrapper-flex">
+                <div class=flex-top-1></div>
+                <div class=flex-top-2>
+                    <div class="btn-group" style="text-align: left; vertical-align: baseline;">
+                        <input class="button wheat_text_link number_input" type="number" name="number" min="0" max="999" maxlength="3" value="0" style="width: 6vw; min-width: 100px;" id="number_send" oninput="this.value=this.value.slice(0,this.maxLength)">
+                        <input class="button wheat_text_link" type="button" id="file_button" value="file" onclick="document.getElementById('file_send').click();" style="width: 7vw; min-width: 100px;">
+                        <input class="button wheat_text_link" type="file" name="file" accept=".jpg,.jpeg,.png,.gif" style="width: 7vw; min-width: 100px; display:none;" id="file_send">
+                        <input class="button wheat_text_link" type="submit" value="apply" style="width: 8vw; min-width: 120px;">
+                        <a class="button wheat_text_link" href="{{ url_for('profile', username=current_user.username) }}" style="width: 8vw; min-width: 120px;">
+                            cancel
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-middle"></div>
+                <div class="flex-bottom">
+                    <div class="fixed-height-container">
+                        <div class="content liked-songs">
+                            {% for track in tracks %}
+                            <label class="checkbox-group">
+                                <div class="liked-songs-wrapper">
+                                    <div class="left-container">
+                                        <div>{{ track.song_title }} - {{ track.artist }}</div> 
+                                        <div style="color: gray">{{ track.year }} - {{ track.album_title }}</div>
+                                        <input type="checkbox" name="checkbox" value={{loop.index}} class="checkbox">
+                                    </div>
+                                    <div class="right-container">
+                                        <div class="checkmark">del</div>
+                                    </div>    
+                                </div>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </form>
+</main>
+{% endblock %}

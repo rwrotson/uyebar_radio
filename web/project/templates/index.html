@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en" style="height: 100%;">
+	<head>
+        <link href="static/css/project.css" rel="stylesheet" type="text/css">
+        
+		<title>UYEBAR RADIO</title>
+
+        <meta charset="utf-8">
+        <meta name="description" content="Online radio with music from uyebar residents">
+
+        <link rel="shortcut icon" type="favicons" href="static/images/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32.png">
+        <link rel="shortcut icon" type="image/png" sizes="128x128" href="static/images/favicons/favicon-128.png">
+        <link rel="shortcut icon" type="image/png" sizes="152x152" href="static/images/favicons/favicon-152.png">
+        <link rel="shortcut icon" type="image/png" sizes="167x167" href="static/images/favicons/favicon-167.png">
+        <link rel="shortcut icon" type="image/png" sizes="180x180" href="static/images/favicons/favicon-180.png">
+        <link rel="shortcut icon" type="image/png" sizes="192x192" href="static/images/favicons/favicon-192.png">
+        <link rel="shortcut icon" type="image/png" sizes="196x196" href="static/images/favicons/favicon-196.png">
+	</head>
+	
+	<body>
+		<main class="index_page">
+            <div>
+                <h1 class="header">
+                    <a class="wheat_text_link" href="{{ url_for('home') }}">
+                        UYEBAR RADIO
+                    </a>
+                </h1>
+                {% if current_user.is_anonymous %}
+                <div class="btn-group">
+                    <a class="button wheat_text_link" href="{{ url_for('sign_up') }}">
+                            sign_up
+                    </a>
+                    <a class="button wheat_text_link" href="{{ url_for('sign_in') }}">
+                            sign_in
+                    </a>
+                </div>
+                {% else %}
+                <div class="btn-group">
+                    <a class="button wheat_text_link" href="{{ url_for('profile', username=current_user.username) }}">
+                            profile
+                    </a>
+                    <a class="button wheat_text_link" href="{{ url_for('log_out') }}">
+                            log_out
+                    </a>
+                </div>
+                {% endif %}
+
+                <ul class="list">
+                    <br>
+                    <li>
+                        <a class="wheat_text_link" href="{{ url_for('channel', number=1) }}">
+                            CHANNEL 1
+                        </a>
+                    </li>
+                    <li>
+                        <a class="wheat_text_link" href="{{ url_for('home') }}">
+                            CHANNEL 2
+                        </a>
+                    </li>
+                    <li>
+                        <a class="wheat_text_link" href="{{ url_for('home') }}">
+                            CHANNEL 3
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "baseauth.html" %}
+{% block content %}
+<main class="index_page">
+    <div>
+        <h1 class="header">SIGN_IN</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token() }}
+            <p>
+                {{ form.username.label(class_='form-label') }}<br>
+                {{ form.username(class_='form-input') }}
+                {% for error in form.username.errors %}
+                <span style="color: red; font-size: 1rem;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label(class_='form-label') }}<br>
+                {{ form.password(class_='form-input') }}
+                {% for error in form.password.errors %}
+                <span style="color: red; font-size: 1rem;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p class="btn-group" style="margin-top: 5vh;">{{ form.submit(class_='button form-button') }}</p>
+        </form>
+    </div>
+</main>
+{% endblock %}

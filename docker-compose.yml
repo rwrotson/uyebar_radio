@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  icecast:
+    build: ./icecast2
+    ports:
+      - "8090:8090"
+  liquidsoap:
+    build: ./liquidsoap
+    ports:
+      - "8091:8091"
+    volumes:
+      - /volume1/media/music/igorek/Prince of Denmark:/home/user/traumprinz
+      - /volume1/media/music/yurets:/home/user/yurets:Z
+  web:
+    build: ./web_test
+    command: python manage.py run -h 0.0.0.0
+    volumes:
+      - ./web_test/:/usr/src/app/
+    ports:
+      - "8092:8092"
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "1"
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=hello_flask
+      - POSTGRES_PASSWORD=hello_flask
+      - POSTGRES_DB=hello_flask_dev
+
+volumes:
+  postgres_data:

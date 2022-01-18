@@ -1,0 +1,11 @@
+{% extends "baseauth.html" %}
+{% block content %}
+<main class="index_page">
+    <div>
+        <h1 class="header">404 NOT FOUND</h1>
+        <p>
+            This page does not exist. Go <a href="{{ url_for('channel', number=number) }}">somewhere else</a>
+        </p>
+    </div>
+</main>
+{% endblock %}

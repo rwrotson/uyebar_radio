@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main" id="{{ channel.id }}">
+    <div class="under-underground">
+        <div style="filter: brightness(0.15);">
+            <div class="image-box-under-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-under-underground">
+                <img src="http://lon1.apankov.net:8092/covers/cover-{{ channel.id }}-3.jpg" class="image image-under-underground" id='cover3'>
+            </div>
+        </div>
+    </div>
+
+    <div class="underground">
+        <div style="filter: brightness(0.6);">
+            <div class="image-box-underground">
+                <img src="{{ url_for('static', filename='images/border_3.png') }}" class="image image-border-underground">
+                <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask-underground">
+                <img src="http://lon1.apankov.net:8092/covers/cover-{{ channel.id }}-2.jpg" class="image image-underground" id="cover2">
+            </div>
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="column column-left">
+            <div class="wrapper-flex">
+                <div class=flex-top-1>
+                    <div class="wrapper-info">
+                        <div style="width: 80%; float:left">
+                            <span class="wheat_text" style="color:grey; font-size: 0.75rem">{{ tags }}</span>
+                        </div>
+                        <div style="width: 20%; float:right;">
+                            <p class="wheat_text" style="font-size: 4.5rem; color: red"> {{ channel.id }}</p>
+                         </div>               
+                    </div>
+                </div>
+                <div class=flex-top-2></div>
+                <div class=flex-middle></div>
+                <div class=flex-bottom>
+                    <div class=image-box-front style="position: relative;">
+                        <img src="{{ url_for('static', filename='images/border_2.png') }}" class="image image-border">
+                        <img src="{{ url_for('static', filename='images/red_mask.jpg') }}" class="image image-mask">
+                        <img src="http://lon1.apankov.net:8092/covers/cover-{{ channel.id }}-1.jpg" class="image" style="filter: brightness(0.9);" id="cover1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="foreground">
+        <div class="column column-right">
+            <div class="wrapper-flex">
+                <div class=flex-top-1></div>
+                <div class=flex-top-2>
+                    {% if current_user.is_anonymous %}
+                    <div class="btn-group" style="text-align: left;">
+                        <button class="button wheat_text_link" id="play">play</button>
+                        <a class="button wheat_text_link" href="{{ url_for('sign_up') }}">
+                            sign_up
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('sign_in') }}">
+                            sign_in
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% else %}
+                    <div class="btn-group" style="text-align: left;">
+                        <button class="button wheat_text_link" id="play">play</button>
+                        <button class="button wheat_text_link button-no-hover" id="save">
+                            save
+                        </button>
+                        <a class="button wheat_text_link" href="{{ url_for('profile', username=current_user.username) }}">
+                            profile
+                        </a>
+                        <a class="button wheat_text_link" href="{{ url_for('log_out') }}">
+                            log_out
+                        </a>
+                        <div style="width: 105px"></div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="flex-middle"></div>
+                <div class="flex-bottom-1"></div>
+                <div class="flex-bottom-2">
+                    <p class="wheat_text" id="song_title"></p>
+                    <audio controls="true" preload="auto" autoplay="true" muted="true" id="my-audio" hidden><source src="{{ channel.link }}" type="audio/mp3">Your browser does not support the audio element.</audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+{% endblock %}
